@@ -7,4 +7,6 @@ const userImageUpload = require('../utils/userImageUpload');
 
 router.post('/sign-up', userImageUpload.single('avatar'), Controller.signUp);
 
+router.post('/sign-in', Controller.signIn);
+
 module.exports = router;
