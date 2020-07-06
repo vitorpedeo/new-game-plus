@@ -36,5 +36,16 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  /*
+   * Método para não retornar a senha no final da requisição
+   * Function foi utilizada no lugar da Arrow Function devido ao escopo do this
+   */
+  User.prototype.toJSON = function () {
+    const values = { ...this.get() };
+    delete values.password;
+
+    return values;
+  };
+
   return User;
 };

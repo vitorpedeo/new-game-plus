@@ -6,8 +6,12 @@ const path = require('path');
 const userRoutes = require('./routes/userRoutes');
 const gameRoutes = require('./routes/gameRoutes');
 
+const responseStandard = require('./middlewares/responseStandard');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(responseStandard);
 
 app.use(
   '/uploads/users',
