@@ -51,6 +51,10 @@ module.exports = {
   },
 
   async create(req, res) {
+    if (req.imgTypeError) {
+      return res.badRequest('Arquivo de imagem inválido!', null);
+    }
+
     const { userId } = req;
 
     const image = req.file.path.slice(38);

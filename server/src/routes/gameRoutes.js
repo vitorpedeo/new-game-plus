@@ -2,13 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 const jwtMiddleware = require('../middlewares/jwt');
+
 const gameImageUpload = require('../utils/gameImageUpload');
+
 const Controller = require('../controllers/GameController');
+
+const { gameSchema } = require('../middlewares/validator');
 
 router.post(
   '/create',
   jwtMiddleware,
   gameImageUpload.single('image'),
+  gameSchema,
   Controller.create
 );
 
@@ -22,6 +27,7 @@ router.put(
   '/update/:id',
   jwtMiddleware,
   gameImageUpload.single('image'),
+  gameSchema,
   Controller.update
 );
 
