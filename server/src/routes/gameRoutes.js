@@ -18,4 +18,13 @@ router.get('/list-mine', jwtMiddleware, Controller.indexMine);
 
 router.get('/show/:id', jwtMiddleware, Controller.show);
 
+router.put(
+  '/update/:id',
+  jwtMiddleware,
+  gameImageUpload.single('image'),
+  Controller.update
+);
+
+router.delete('/delete/:id', jwtMiddleware, Controller.delete);
+
 module.exports = router;
