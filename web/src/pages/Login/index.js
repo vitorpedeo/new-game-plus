@@ -29,8 +29,8 @@ const Login = () => {
             </div>
 
             <div className='checkbox-container'>
-              <input type='checkbox' />
-              <label htmlFor=''>Me manter conectado</label>
+              <input type='checkbox' id='checkbox' />
+              <label htmlFor='checkbox'>Me manter conectado</label>
             </div>
 
             <button type='submit'>Entrar</button>

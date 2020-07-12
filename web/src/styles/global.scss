@@ -1,3 +1,5 @@
+@import './utils/variables';
+
 * {
   margin: 0;
   padding: 0;
@@ -25,5 +27,53 @@ body {
   button {
     border: none;
     background: none;
+  }
+}
+
+.checkbox-container {
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+
+  input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    background-color: #cccc;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: white;
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    &:checked {
+      background-color: $primaryColor;
+    }
+
+    &:checked::after {
+      opacity: 1;
+    }
+  }
+
+  label {
+    margin-left: 10px;
+    color: #989292;
+    font-size: 18px;
+    font-weight: 100;
   }
 }
