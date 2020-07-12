@@ -1,0 +1,130 @@
+@import '../../styles/utils/variables';
+
+.login-container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+
+  .login-form-container {
+    padding: 20px 40px;
+    width: 45%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .one-more-container {
+      width: 100%;
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .login-form {
+        max-width: 500px;
+        width: 100%;
+
+        h2 {
+          font-size: 45px;
+          margin-bottom: 30px;
+        }
+
+        .input-container {
+          margin-top: 20px;
+
+          display: flex;
+          flex-direction: column;
+
+          label {
+            font-size: 22px;
+            font-weight: 100;
+          }
+
+          input {
+            padding: 5px 15px;
+            height: 60px;
+            border: 1px solid #cccc;
+            border-radius: 6px;
+            outline: none;
+            font-size: 22px;
+            font-weight: 100;
+          }
+        }
+
+        .checkbox-container {
+          margin-top: 20px;
+
+          label {
+            margin-left: 10px;
+            color: #989292;
+            font-weight: 100;
+          }
+        }
+
+        button {
+          margin-top: 60px;
+          padding: 20px 0;
+          width: 100%;
+          background-color: $primaryColor;
+          border-radius: 6px;
+          color: #fff;
+          font-size: 22px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+
+      p {
+        color: #989292;
+        font-size: 18px;
+        font-weight: 100;
+
+        a {
+          color: $primaryColor;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .login-info-container {
+    width: 55%;
+    height: 100%;
+    background: url('../../assets/bg.png');
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login-info {
+      max-width: 340px;
+      width: 100%;
+
+      h1 {
+        color: #fff;
+        font-size: 45px;
+      }
+
+      p {
+        margin-top: 50px;
+        color: #fff;
+        line-height: 1.8;
+        font-size: 22px;
+        font-weight: 100;
+      }
+
+      .consoles-logo {
+        margin-top: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+  }
+}
