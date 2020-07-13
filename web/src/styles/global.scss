@@ -13,7 +13,8 @@ body {
 
 body,
 input,
-button {
+button,
+select {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -27,6 +28,30 @@ body {
   button {
     border: none;
     background: none;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    height: 60px;
+    outline: none;
+    border: 1px solid #cccc;
+    border-radius: 6px;
+    padding: 0 20px;
+    font-size: 22px;
+    font-weight: 100;
+    cursor: pointer;
+
+    background-image: url('../assets/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 18px;
+
+    &:focus {
+      box-shadow: 0 0 4px $primaryColor;
+    }
   }
 }
 
@@ -75,5 +100,46 @@ body {
     color: #989292;
     font-size: 18px;
     font-weight: 100;
+  }
+}
+
+.input-container {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 100;
+  }
+
+  input {
+    padding: 5px 15px;
+    height: 60px;
+    border: 1px solid #cccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 22px;
+    font-weight: 100;
+
+    &:focus {
+      box-shadow: 0 0 4px $primaryColor;
+    }
+  }
+}
+
+.select-input-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  .input-container {
+    &:first-child {
+      margin-right: 10px;
+      width: 30%;
+    }
   }
 }

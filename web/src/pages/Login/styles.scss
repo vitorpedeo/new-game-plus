@@ -34,33 +34,6 @@
           margin-bottom: 30px;
         }
 
-        .input-container {
-          margin-top: 20px;
-
-          display: flex;
-          flex-direction: column;
-
-          label {
-            margin-bottom: 5px;
-            font-size: 22px;
-            font-weight: 100;
-          }
-
-          input {
-            padding: 5px 15px;
-            height: 60px;
-            border: 1px solid #cccc;
-            border-radius: 6px;
-            outline: none;
-            font-size: 22px;
-            font-weight: 100;
-
-            &:focus {
-              box-shadow: 0 0 4px $primaryColor;
-            }
-          }
-        }
-
         button {
           margin-top: 60px;
           padding: 20px 0;
