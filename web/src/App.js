@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Search from './pages/Search';
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
         <Route exact path='/' component={LandingPage} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
-        <Route path='/home' component={Home} />
+        <Route path='/user/home' component={Home} />
+        <Route path='/user/search' component={Search} />
       </Switch>
     </BrowserRouter>
   );

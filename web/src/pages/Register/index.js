@@ -28,15 +28,19 @@ const Register = () => {
         <div className='select-input-container'>
           <div className='input-container'>
             <label htmlFor=''>Estado</label>
-            <select>
-              <option value='0'>UF</option>
+            <select defaultValue={'0'}>
+              <option value='0' disabled>
+                UF
+              </option>
               <option value=''>GO</option>
             </select>
           </div>
           <div className='input-container'>
             <label htmlFor=''>Cidade</label>
-            <select>
-              <option value='0'>Cidade</option>
+            <select defaultValue={'0'}>
+              <option value='0' disabled>
+                Cidade
+              </option>
               <option value=''>Senador Canedo</option>
             </select>
           </div>

@@ -23,7 +23,7 @@ const Home = () => {
             <p>Seja bem vindo, Cristiano!</p>
           </div>
           <div className='navigate-links'>
-            <Link to='' className='home-link'>
+            <Link to='/user/search' className='home-link'>
               <p>Procurar jogos</p>
               <div className='link-icon'>
                 <FiSearch size={30} />
