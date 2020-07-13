@@ -1,0 +1,250 @@
+@import '../../styles/utils/variables';
+
+.home-container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+
+  .user-panel-container {
+    padding: 20px 40px;
+    width: 35%;
+    height: 100%;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+
+    .user-panel {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .profile-pic-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .profile-pic {
+          width: 225px;
+          height: 225px;
+          border-radius: 50%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        p {
+          margin-top: 10px;
+          font-size: 22px;
+          font-weight: bold;
+        }
+      }
+
+      .navigate-links {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .home-link {
+          width: 350px;
+          height: 70px;
+          border-radius: 6px;
+          overflow-x: hidden;
+          background-color: $primaryColor;
+          color: #fff;
+          font-size: 22px;
+          font-weight: bold;
+          transition: 0.4s;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          p {
+            padding: 0 10px;
+            flex: 1;
+            text-align: center;
+          }
+
+          .link-icon {
+            padding: 0 10px;
+            width: 70px;
+            height: 100%;
+            background-color: #0062ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &:last-child {
+            margin-top: 20px;
+          }
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .logout {
+        cursor: pointer;
+        transition: 0.4s;
+
+        display: flex;
+        align-items: center;
+
+        .power-off {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          background-color: #e63946;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        p {
+          margin-left: 10px;
+          color: #e63946;
+          font-size: 22px;
+          font-weight: bold;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .games-announced {
+    padding: 0 50px;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      margin-top: 100px;
+      align-self: flex-start;
+    }
+
+    .games-container {
+      margin-top: 40px;
+      width: 75%;
+
+      .game-card {
+        margin-bottom: 30px;
+        padding: 10px 15px;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 6px;
+
+        display: flex;
+
+        .game-image {
+          width: 150px;
+          height: 90px;
+          border-radius: 6px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .game-info {
+          padding: 0 20px;
+          flex: 2;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          .game-name-label,
+          .game-platform-label {
+            width: 100%;
+
+            display: flex;
+
+            p {
+              font-size: 18px;
+              font-weight: bold;
+            }
+
+            span {
+              flex: 1;
+              font-size: 18px;
+              font-weight: bold;
+              text-align: center;
+            }
+          }
+
+          .game-name-label {
+            span {
+              color: #999999;
+            }
+          }
+        }
+
+        .game-edit-delete {
+          flex: 1;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .edit-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fcbf49;
+            cursor: pointer;
+            transition: 0.8s;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+              transform: rotate(360deg);
+            }
+          }
+
+          .delete-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e63946;
+            cursor: pointer;
+            transition: 0.8s;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+              transform: rotate(360deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
