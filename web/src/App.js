@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import GameDetails from './pages/GameDetails';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/login' component={Login} />
         <Route path='/user/home' component={Home} />
         <Route path='/user/search' component={Search} />
+        <Route path='/user/result/:id' component={GameDetails} />
       </Switch>
     </BrowserRouter>
   );
