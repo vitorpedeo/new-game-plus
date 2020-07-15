@@ -14,7 +14,8 @@ body {
 body,
 input,
 button,
-select {
+select,
+textarea {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -49,6 +50,11 @@ body {
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: 18px;
+
+    &:disabled {
+      background-color: #ccc;
+      color: #ccc;
+    }
 
     &:focus {
       box-shadow: 0 0 4px $primaryColor;
@@ -106,6 +112,7 @@ body {
 
 .input-container {
   margin-top: 20px;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -118,10 +125,29 @@ body {
 
   input {
     padding: 5px 15px;
+    width: 100%;
     height: 60px;
     border: 1px solid #cccc;
     border-radius: 6px;
     outline: none;
+    font-size: 22px;
+    font-weight: 100;
+
+    &:disabled {
+      background-color: #ccc;
+    }
+
+    &:focus {
+      box-shadow: 0 0 4px $primaryColor;
+    }
+  }
+
+  textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    resize: none;
     font-size: 22px;
     font-weight: 100;
 

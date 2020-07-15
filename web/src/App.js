@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import GameDetails from './pages/GameDetails';
+import NewGame from './pages/NewGame';
+import EditGame from './pages/EditGame';
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
         <Route path='/user/home' component={Home} />
         <Route path='/user/search' component={Search} />
         <Route path='/user/result/:id' component={GameDetails} />
+        <Route path='/user/new-game' component={NewGame} />
+        <Route path='/user/edit-game/:id' component={EditGame} />
       </Switch>
     </BrowserRouter>
   );

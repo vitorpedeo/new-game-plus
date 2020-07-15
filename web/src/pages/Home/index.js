@@ -29,7 +29,7 @@ const Home = () => {
                 <FiSearch size={30} />
               </div>
             </Link>
-            <Link to='' className='home-link'>
+            <Link to='/user/new-game' className='home-link'>
               <p>Anunciar um jogo</p>
               <div className='link-icon'>
                 <FiPlus size={30} />
@@ -65,9 +65,9 @@ const Home = () => {
               </div>
             </div>
             <div className='game-edit-delete'>
-              <div className='edit-btn'>
+              <Link to='/user/edit-game/1' className='edit-btn'>
                 <FaPencilAlt color='#fff' size={32} />
-              </div>
+              </Link>
               <div className='delete-btn'>
                 <FaTrash color='#fff' size={32} />
               </div>
