@@ -32,7 +32,7 @@ module.exports = {
       await User.create({
         avatar,
         name,
-        whatsApp,
+        whatsApp: `55${whatsApp}`,
         city,
         uf,
         email,

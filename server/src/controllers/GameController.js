@@ -1,4 +1,5 @@
 const { Game } = require('../database/models');
+const { User } = require('../database/models');
 
 const fs = require('fs');
 const { promisify } = require('util');
@@ -38,7 +39,7 @@ module.exports = {
     const { id } = req.params;
 
     try {
-      const game = await Game.findOne({ where: { id, userId } });
+      const game = await Game.findOne({ where: { id, userId }, include: User });
 
       if (!game) {
         return res.notFound();
