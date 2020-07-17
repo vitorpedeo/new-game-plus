@@ -13,7 +13,10 @@ const signUpSchema = (req, res, next) => {
       .string()
       .length(11, 'Número inválido.')
       .required('Insira seu número.'),
-    uf: yup.string().length(2).required('Insira seu estado.'),
+    uf: yup
+      .string()
+      .length(2, 'Insira seu estado.')
+      .required('Insira seu estado.'),
     city: yup.string().required('Insira sua cidade.'),
     email: yup.string().email('Email inválido.').required('Insira seu email.'),
     password: yup
