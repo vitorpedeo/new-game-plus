@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { User } from './context/UserContext';
 
@@ -15,6 +16,7 @@ import EditGame from './pages/EditGame';
 const App = () => {
   return (
     <User>
+      <ToastContainer autoClose={4000} />
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={LandingPage} />

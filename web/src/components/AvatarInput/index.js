@@ -3,6 +3,8 @@ import { FaUserAlt } from 'react-icons/fa';
 
 import { UserContext } from '../../context/UserContext';
 
+import { errorToast } from '../../utils/toasts';
+
 import './styles.scss';
 
 const AvatarInput = () => {
@@ -24,7 +26,7 @@ const AvatarInput = () => {
     const acceptedImageTypes = ['image/png', 'image/jpg', 'image/jpeg'];
 
     if (!acceptedImageTypes.includes(image.type)) {
-      alert('Foto inválida!');
+      errorToast('Foto inválida!');
       setPreview('');
       return;
     }

@@ -166,7 +166,11 @@ body {
   .input-container {
     &:first-child {
       margin-right: 10px;
-      width: 30%;
+      width: 20%;
+    }
+
+    &:last-child {
+      width: 77%;
     }
   }
 }
