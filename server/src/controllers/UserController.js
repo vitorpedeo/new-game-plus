@@ -65,7 +65,7 @@ module.exports = {
 
       const refreshToken = generateRefreshJwt({ id: user.id });
 
-      return res.ok('Login efetuado com sucesso.', user, {
+      return res.ok('Login efetuado com sucesso!', user, {
         token,
         refreshToken,
       });
