@@ -1,22 +1,21 @@
-import React from 'react';
-import { FaUserAlt } from 'react-icons/fa';
+import React, { useContext } from 'react';
 
+import { UserContext } from '../../context/UserContext';
+
+import AvatarInput from '../../components/AvatarInput';
 import LogoHeader from '../../components/LogoHeader';
 
 import './styles.scss';
 
 const Register = () => {
+  const { avatar } = useContext(UserContext);
+
   return (
     <div className='register-container'>
       <LogoHeader />
       <h1>Criar conta</h1>
       <form className='register-form'>
-        <div className='avatar-input-container'>
-          <label htmlFor=''>Imagem do Perfil</label>
-          <div className='avatar'>
-            <FaUserAlt color='#fff' size={60} className='avatar-icon' />
-          </div>
-        </div>
+        <AvatarInput />
         <div className='input-container'>
           <label htmlFor=''>Nome</label>
           <input type='text' />
