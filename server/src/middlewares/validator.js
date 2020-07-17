@@ -9,21 +9,18 @@ const signUpSchema = (req, res, next) => {
 
   const schema = yup.object().shape({
     name: yup.string().required('Insira seu nome.'),
-    whatsApp: yup
-      .string()
-      .length(11, 'Número inválido.')
-      .required('Insira seu número.'),
+    whatsApp: yup.string().length(11, 'Número inválido.').required(),
     uf: yup
       .string()
       .length(2, 'Insira seu estado.')
       .required('Insira seu estado.'),
     city: yup.string().required('Insira sua cidade.'),
-    email: yup.string().email('Email inválido.').required('Insira seu email.'),
+    email: yup.string().email('Email inválido.').required(),
     password: yup
       .string()
       .min(5, 'Sua senha deve ter no mínimo ${min} caracteres.')
       .max(20, 'Sua senha deve ter no máximo ${max} caracteres.')
-      .required(''),
+      .required(),
   });
 
   schema
