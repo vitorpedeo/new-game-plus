@@ -5,7 +5,9 @@ const Controller = require('../controllers/UserController');
 
 const userImageUpload = require('../utils/userImageUpload');
 
+const jwtMiddleware = require('../middlewares/jwt');
 const { signUpSchema, signInSchema } = require('../middlewares/validator');
+const UserController = require('../controllers/UserController');
 
 router.post(
   '/sign-up',
@@ -15,5 +17,7 @@ router.post(
 );
 
 router.post('/sign-in', signInSchema, Controller.signIn);
+
+router.get('/get-user-info', jwtMiddleware, UserController.getUserInfo);
 
 module.exports = router;

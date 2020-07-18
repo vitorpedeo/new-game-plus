@@ -73,4 +73,20 @@ module.exports = {
       return res.serverError();
     }
   },
+
+  async getUserInfo(req, res) {
+    const { userId } = req;
+
+    try {
+      const user = await User.findOne({ where: { id: userId } });
+
+      if (!user) {
+        return res.unauthorized();
+      }
+
+      return res.ok('', { userName: user.name, userAvatar: user.avatar });
+    } catch (error) {
+      return res.serverError();
+    }
+  },
 };
