@@ -5,6 +5,7 @@ const { promisify } = require('util');
 const unlinkAsync = promisify(fs.unlink);
 
 const { User } = require('../database/models');
+const { Game } = require('../database/models');
 const { generateJwt, generateRefreshJwt } = require('../utils/jwt');
 
 module.exports = {
@@ -78,13 +79,17 @@ module.exports = {
     const { userId } = req;
 
     try {
-      const user = await User.findOne({ where: { id: userId } });
+      const user = await User.findOne({ where: { id: userId }, include: Game });
 
       if (!user) {
         return res.unauthorized();
       }
 
-      return res.ok('', { userName: user.name, userAvatar: user.avatar });
+      return res.ok('', {
+        userName: user.name,
+        userAvatar: user.avatar,
+        userGames: user.Games,
+      });
     } catch (error) {
       return res.serverError();
     }
