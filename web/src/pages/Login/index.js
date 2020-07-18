@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import api from '../../utils/api';
 import { successToast, errorToast } from '../../utils/toasts';
+import { setCookie } from '../../utils/cookies';
 
 import LogoHeader from '../../components/LogoHeader';
 
@@ -31,9 +32,9 @@ const Login = () => {
       const message = res.data.message;
       const metadata = res.data.metadata;
 
-      localStorage.setItem('token', metadata.token);
-
       successToast(message);
+
+      setCookie('token', metadata.token);
 
       history.push('/user/home');
     } catch (error) {

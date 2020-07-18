@@ -1,13 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { FiSearch, FiPlus } from 'react-icons/fi';
 import { FaPowerOff, FaPencilAlt, FaTrash } from 'react-icons/fa';
+
+import api from '../../utils/api';
+import { getCookie, removeCookie } from '../../utils/cookies';
+import { successToast } from '../../utils/toasts';
 
 import LogoHeader from '../../components/LogoHeader';
 
 import './styles.scss';
 
 const Home = () => {
+  const [userName, setUserName] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [userGames, setUserGames] = useState([]);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    const token = getCookie('token');
+
+    api
+      .get('auth/get-user-info', {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const data = res.data.data;
+        const { userName, userAvatar, userGames } = data;
+
+        setUserName(userName);
+        setUserAvatar(userAvatar);
+        setUserGames(userGames);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const logout = () => {
+    removeCookie('token');
+    successToast('Até mais!');
+
+    history.push('/login');
+  };
+
   return (
     <div className='home-container'>
       <div className='user-panel-container'>
@@ -15,12 +52,9 @@ const Home = () => {
         <div className='user-panel'>
           <div className='profile-pic-container'>
             <div className='profile-pic'>
-              <img
-                src='https://exame.com/wp-content/uploads/2020/06/cristiano-ronaldo-juventus.jpg'
-                alt=''
-              />
+              <img src={`http://localhost:5000/${userAvatar}`} alt='' />
             </div>
-            <p>Seja bem vindo, Cristiano!</p>
+            <p>Seja bem vindo, {userName}!</p>
           </div>
           <div className='navigate-links'>
             <Link to='/user/search' className='home-link'>
@@ -36,7 +70,7 @@ const Home = () => {
               </div>
             </Link>
           </div>
-          <button type='button' className='logout'>
+          <button type='button' className='logout' onClick={logout}>
             <div className='power-off'>
               <FaPowerOff color='#fff' size={32} />
             </div>
@@ -47,58 +81,38 @@ const Home = () => {
       <div className='games-announced'>
         <h1>Meus jogos anunciados</h1>
         <div className='games-container'>
-          <div className='game-card'>
-            <div className='game-image'>
-              <img
-                src='https://vgbr.com/wp-content/uploads/2019/06/images-22.jpeg'
-                alt=''
-              />
-            </div>
-            <div className='game-info'>
-              <div className='game-name-label'>
-                <p>Nome</p>
-                <span>The Witcher 3</span>
+          {userGames.map((game) => (
+            <div className='game-card' key={game.id}>
+              <div className='game-image'>
+                <img src={`http://localhost:5000/${game.image}`} alt='' />
               </div>
-              <div className='game-platform-label'>
-                <p>Plataforma</p>
-                <span style={{ color: '#007E00' }}>Xbox One</span>
+              <div className='game-info'>
+                <div className='game-name-label'>
+                  <p>Nome</p>
+                  <span>{game.title}</span>
+                </div>
+                <div className='game-platform-label'>
+                  <p>Plataforma</p>
+
+                  {game.platform.includes('Xbox') ? (
+                    <span style={{ color: '#007E00' }}>{game.platform}</span>
+                  ) : game.platform.includes('Playsation') ? (
+                    <span style={{ color: '#0A549C' }}>{game.platform}</span>
+                  ) : (
+                    <span style={{ color: '#E70012' }}>{game.platform}</span>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className='game-edit-delete'>
-              <Link to='/user/edit-game/1' className='edit-btn'>
-                <FaPencilAlt color='#fff' size={32} />
-              </Link>
-              <div className='delete-btn'>
-                <FaTrash color='#fff' size={32} />
-              </div>
-            </div>
-          </div>
-          <div className='game-card'>
-            <div className='game-image'>
-              <img
-                src='https://miro.medium.com/max/2560/1*UA52nS36ni6EpiD7BhfQkg.jpeg'
-                alt=''
-              />
-            </div>
-            <div className='game-info'>
-              <div className='game-name-label'>
-                <p>Nome</p>
-                <span>The Last of Us Part II</span>
-              </div>
-              <div className='game-platform-label'>
-                <p>Plataforma</p>
-                <span style={{ color: '#0A549C' }}>Playstation 4</span>
+              <div className='game-edit-delete'>
+                <Link to='/user/edit-game/1' className='edit-btn'>
+                  <FaPencilAlt color='#fff' size={32} />
+                </Link>
+                <div className='delete-btn'>
+                  <FaTrash color='#fff' size={32} />
+                </div>
               </div>
             </div>
-            <div className='game-edit-delete'>
-              <div className='edit-btn'>
-                <FaPencilAlt color='#fff' size={32} />
-              </div>
-              <div className='delete-btn'>
-                <FaTrash color='#fff' size={32} />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
