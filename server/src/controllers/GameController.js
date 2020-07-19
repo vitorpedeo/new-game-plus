@@ -58,9 +58,14 @@ module.exports = {
 
     const { userId } = req;
 
+    const user = await User.findOne({ where: { id: userId } });
+
     const image = req.file.path.slice(38);
 
-    const { title, description, platform, city, uf } = req.body;
+    const { title, description, platform } = req.body;
+    const myLocalization = req.body.myLocalization ? true : false;
+    const city = myLocalization ? user.city : req.body.city;
+    const uf = myLocalization ? user.uf : req.body.uf;
     const isTradeable = req.body.isTradeable ? true : false;
     const wantedGame = isTradeable ? req.body.wantedGame : null;
     const price = isTradeable ? null : req.body.price;

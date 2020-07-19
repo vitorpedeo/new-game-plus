@@ -56,8 +56,6 @@ const gameSchema = (req, res, next) => {
     title: yup.string().required('Insira o nome do jogo.'),
     description: yup.string().required('Insira uma breve descrição.'),
     platform: yup.string().required('Insira a plataforma.'),
-    uf: yup.string().length(2).required('Insira seu estado.'),
-    city: yup.string().required('Insira sua cidade.'),
   });
 
   schema
