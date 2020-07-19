@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { GameContext } from '../../context/GameContext';
 
 import LogoHeader from '../../components/LogoHeader';
+import GameInputImage from '../../components/GameImageInput';
 
 import './styles.scss';
 
 const NewGame = () => {
+  const { image } = useContext(GameContext);
+
+  console.log(image);
+
   return (
     <div className='new-game-container'>
       <LogoHeader />
       <h1>Anunciar um jogo</h1>
       <form className='new-game-form'>
-        <div className='game-image-input-container'>
-          <label htmlFor=''>Imagem do jogo</label>
-          <div className='image-input'>
-            <p>Clique aqui</p>
-          </div>
-        </div>
+        <GameInputImage />
         <div className='input-container'>
           <label htmlFor=''>Título</label>
           <input type='text' />

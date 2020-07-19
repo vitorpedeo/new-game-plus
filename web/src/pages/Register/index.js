@@ -76,9 +76,13 @@ const Register = () => {
 
       history.push('/login');
     } catch (error) {
-      const errorMessages = error.response.data.data.errors;
+      const errorMessages = error.response.data.data
+        ? error.response.data.data.errors
+        : error.response.data.message;
 
-      errorMessages.forEach((message) => errorToast(message));
+      Array.isArray(errorMessages)
+        ? errorMessages.forEach((message) => errorToast(message))
+        : errorToast(errorMessages);
     }
   };
 

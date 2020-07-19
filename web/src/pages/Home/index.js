@@ -81,38 +81,44 @@ const Home = () => {
       <div className='games-announced'>
         <h1>Meus jogos anunciados</h1>
         <div className='games-container'>
-          {userGames.map((game) => (
-            <div className='game-card' key={game.id}>
-              <div className='game-image'>
-                <img src={`http://localhost:5000/${game.image}`} alt='' />
-              </div>
-              <div className='game-info'>
-                <div className='game-name-label'>
-                  <p>Nome</p>
-                  <span>{game.title}</span>
+          {userGames.length !== 0 ? (
+            userGames.map((game) => (
+              <div className='game-card' key={game.id}>
+                <div className='game-image'>
+                  <img src={`http://localhost:5000/${game.image}`} alt='' />
                 </div>
-                <div className='game-platform-label'>
-                  <p>Plataforma</p>
+                <div className='game-info'>
+                  <div className='game-name-label'>
+                    <p>Nome</p>
+                    <span>{game.title}</span>
+                  </div>
+                  <div className='game-platform-label'>
+                    <p>Plataforma</p>
 
-                  {game.platform.includes('Xbox') ? (
-                    <span style={{ color: '#007E00' }}>{game.platform}</span>
-                  ) : game.platform.includes('Playsation') ? (
-                    <span style={{ color: '#0A549C' }}>{game.platform}</span>
-                  ) : (
-                    <span style={{ color: '#E70012' }}>{game.platform}</span>
-                  )}
+                    {game.platform.includes('Xbox') ? (
+                      <span style={{ color: '#007E00' }}>{game.platform}</span>
+                    ) : game.platform.includes('Playsation') ? (
+                      <span style={{ color: '#0A549C' }}>{game.platform}</span>
+                    ) : (
+                      <span style={{ color: '#E70012' }}>{game.platform}</span>
+                    )}
+                  </div>
+                </div>
+                <div className='game-edit-delete'>
+                  <Link to='/user/edit-game/1' className='edit-btn'>
+                    <FaPencilAlt color='#fff' size={32} />
+                  </Link>
+                  <div className='delete-btn'>
+                    <FaTrash color='#fff' size={32} />
+                  </div>
                 </div>
               </div>
-              <div className='game-edit-delete'>
-                <Link to='/user/edit-game/1' className='edit-btn'>
-                  <FaPencilAlt color='#fff' size={32} />
-                </Link>
-                <div className='delete-btn'>
-                  <FaTrash color='#fff' size={32} />
-                </div>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h1 style={{ textAlign: 'center' }}>
+              Nenhum jogo anunciado ainda!
+            </h1>
+          )}
         </div>
       </div>
     </div>

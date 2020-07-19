@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LogoHeader from '../../components/LogoHeader';
+import GameImageInput from '../../components/GameImageInput';
 
 import './styles.scss';
 
@@ -10,12 +11,7 @@ const EditGame = () => {
       <LogoHeader />
       <h1>Editar meu anúncio</h1>
       <form className='new-game-form'>
-        <div className='game-image-input-container'>
-          <label htmlFor=''>Imagem do jogo</label>
-          <div className='image-input'>
-            <p>Clique aqui</p>
-          </div>
-        </div>
+        <GameImageInput />
         <div className='input-container'>
           <label htmlFor=''>Título</label>
           <input type='text' />

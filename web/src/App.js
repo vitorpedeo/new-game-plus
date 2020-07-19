@@ -3,7 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { User } from './context/UserContext';
+import { Game } from './context/GameContext';
 
+import PrivateRoute from './components/PrivateRoute';
 import LandingPage from './pages/LandingPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -16,19 +18,21 @@ import EditGame from './pages/EditGame';
 const App = () => {
   return (
     <User>
-      <ToastContainer autoClose={4000} />
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/' component={LandingPage} />
-          <Route path='/register' component={Register} />
-          <Route path='/login' component={Login} />
-          <Route path='/user/home' component={Home} />
-          <Route path='/user/search' component={Search} />
-          <Route path='/user/result/:id' component={GameDetails} />
-          <Route path='/user/new-game' component={NewGame} />
-          <Route path='/user/edit-game/:id' component={EditGame} />
-        </Switch>
-      </BrowserRouter>
+      <Game>
+        <ToastContainer autoClose={4000} />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/' component={LandingPage} />
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <PrivateRoute path='/user/home' component={Home} />
+            <PrivateRoute path='/user/search' component={Search} />
+            <PrivateRoute path='/user/result/:id' component={GameDetails} />
+            <PrivateRoute path='/user/new-game' component={NewGame} />
+            <PrivateRoute path='/user/edit-game/:id' component={EditGame} />
+          </Switch>
+        </BrowserRouter>
+      </Game>
     </User>
   );
 };
