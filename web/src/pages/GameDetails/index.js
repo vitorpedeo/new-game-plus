@@ -1,12 +1,62 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { FaArrowLeft, FaWhatsapp } from 'react-icons/fa';
+
+import api from '../../utils/api';
+import { getCookie } from '../../utils/cookies';
 
 import LogoHeader from '../../components/LogoHeader';
 
 import './styles.scss';
 
 const GameDetails = () => {
+  const { id } = useParams();
+  const [image, setImage] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [platform, setPlatform] = useState('');
+  const [userName, setUserName] = useState('');
+  const [whatsApp, setWhatsApp] = useState('');
+  const [isTradeable, setIsTradeable] = useState(false);
+  const [wantedGame, setWantedGame] = useState('');
+  const [price, setPrice] = useState('');
+
+  const token = getCookie('token');
+
+  useEffect(() => {
+    api
+      .get(`game/show/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const game = res.data.data;
+        const {
+          image,
+          title,
+          description,
+          platform,
+          isTradeable,
+          wantedGame,
+          price,
+        } = game;
+        const userName = game.User.name;
+        const whatsApp = game.User.whatsApp;
+
+        setImage(image);
+        setTitle(title);
+        setDescription(description);
+        setPlatform(platform);
+        setUserName(userName);
+        setWhatsApp(whatsApp);
+        setIsTradeable(isTradeable);
+        setWantedGame(wantedGame);
+        setPrice(price);
+      })
+      .catch((err) => console.log(err));
+  }, [id, token]);
+
   return (
     <div className='game-detail-container'>
       <LogoHeader />
@@ -15,25 +65,48 @@ const GameDetails = () => {
           <FaArrowLeft size={35} /> <p>Voltar</p>
         </Link>
         <div className='game-detail-image'>
-          <img
-            src='https://store-images.s-microsoft.com/image/apps.43376.65636291532456667.5893b5ba-43c6-42b7-afce-10638cd992d8.1f1dc21e-bc18-40e0-9394-e8fd6f4a85d2?mode=scale&q=90&h=1080&w=1920'
-            alt=''
-          />
+          <img src={`http://localhost:5000/${image}`} alt='' />
         </div>
         <div className='game-detail-info'>
-          <h1>Metal Gear Solid V: Phantom Pain</h1>
-          <p className='game-desc'>Versão Day One, sem nenhum detalhe.</p>
-          <p className='game-platform' style={{ color: '#0a549c' }}>
-            Playstation 4
-          </p>
-          <p className='game-announcer'>Anunciado por Lionel Messi</p>
+          <h1>{title}</h1>
+          <p className='game-desc'>{description}</p>
+          {platform.includes('Xbox') ? (
+            <p className='game-platform' style={{ color: '#007E00' }}>
+              {platform}
+            </p>
+          ) : platform.includes('Playstation') ? (
+            <p className='game-platform' style={{ color: '#0A549C' }}>
+              {platform}
+            </p>
+          ) : (
+            <p className='game-platform' style={{ color: '#E70012' }}>
+              {platform}
+            </p>
+          )}
+          <p className='game-announcer'>Anunciado por {userName}</p>
           <p className='game-value'>
-            Interesse <span>Fallout 4</span>
+            {isTradeable === true ? (
+              <>
+                Interesse <span>{wantedGame}</span>
+              </>
+            ) : (
+              <>
+                Preço{' '}
+                <span>
+                  {Intl.NumberFormat('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }).format(price)}
+                </span>
+              </>
+            )}
           </p>
 
-          <button type='button'>
+          <a
+            href={`https://api.whatsapp.com/send?phone=${whatsApp}&text=Olá,%20tenho%20interesse%20no%20jogo%20anunciado.`}
+          >
             Mensagem <FaWhatsapp size={25} />
-          </button>
+          </a>
         </div>
       </div>
     </div>

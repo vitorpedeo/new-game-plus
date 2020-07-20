@@ -35,7 +35,7 @@ const NewGame = () => {
 
   useEffect(() => {
     api
-      .get(`game/show/${id}`, {
+      .get(`game/show-mine/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
