@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { FiSearch, FiPlus } from 'react-icons/fi';
 import { FaPowerOff, FaPencilAlt, FaTrash } from 'react-icons/fa';
 
 import api from '../../utils/api';
 import { getCookie, removeCookie } from '../../utils/cookies';
-import { successToast } from '../../utils/toasts';
+import { successToast, errorToast } from '../../utils/toasts';
 
 import LogoHeader from '../../components/LogoHeader';
 
@@ -17,10 +18,9 @@ const Home = () => {
   const [userGames, setUserGames] = useState([]);
 
   const history = useHistory();
+  const token = getCookie('token');
 
   useEffect(() => {
-    const token = getCookie('token');
-
     api
       .get('auth/get-user-info', {
         headers: {
@@ -36,7 +36,41 @@ const Home = () => {
         setUserGames(userGames);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [token]);
+
+  const handleGameDelete = (id) => {
+    Swal.fire({
+      title: 'Você tem certeza?',
+      text: 'Essa ação é irreversível!',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar',
+      confirmButtonColor: '#06d6a0',
+      cancelButtonColor: '#e63946',
+    }).then((result) => {
+      if (result.value) {
+        api
+          .delete(`game/delete/${id}`, {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            const updatedGames = userGames.filter((game) => game.id !== id);
+            setUserGames(updatedGames);
+
+            const successMessage = res.data.message;
+            successToast(successMessage);
+          })
+          .catch((error) => {
+            const errorMessage = error.response.data.message;
+
+            errorToast(errorMessage);
+          });
+      }
+    });
+  };
 
   const logout = () => {
     removeCookie('token');
@@ -108,7 +142,10 @@ const Home = () => {
                   <Link to={`/user/edit-game/${game.id}`} className='edit-btn'>
                     <FaPencilAlt color='#fff' size={32} />
                   </Link>
-                  <div className='delete-btn'>
+                  <div
+                    className='delete-btn'
+                    onClick={() => handleGameDelete(game.id)}
+                  >
                     <FaTrash color='#fff' size={32} />
                   </div>
                 </div>
