@@ -39,6 +39,22 @@ module.exports = {
   },
 
   async show(req, res) {
+    const { id } = req.params;
+
+    try {
+      const game = await Game.findOne({ where: { id }, include: User });
+
+      if (!game) {
+        return res.notFound();
+      }
+
+      return res.ok('', game);
+    } catch (error) {
+      return res.serverError();
+    }
+  },
+
+  async showMine(req, res) {
     const { userId } = req;
     const { id } = req.params;
 

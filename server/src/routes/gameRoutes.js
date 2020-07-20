@@ -23,6 +23,8 @@ router.get('/list-mine', jwtMiddleware, Controller.indexMine);
 
 router.get('/show/:id', jwtMiddleware, Controller.show);
 
+router.get('/show-mine/:id', jwtMiddleware, Controller.showMine);
+
 router.put(
   '/update/:id',
   jwtMiddleware,
