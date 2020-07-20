@@ -62,13 +62,18 @@ module.exports = {
 
     const image = req.file.path.slice(38);
 
-    const { title, description, platform } = req.body;
-    const myLocalization = req.body.myLocalization ? true : false;
-    const city = myLocalization ? user.city : req.body.city;
-    const uf = myLocalization ? user.uf : req.body.uf;
-    const isTradeable = req.body.isTradeable ? true : false;
-    const wantedGame = isTradeable ? req.body.wantedGame : null;
-    const price = isTradeable ? null : req.body.price;
+    const {
+      title,
+      description,
+      platform,
+      useMyLocalization,
+      isTradeable,
+    } = req.body;
+
+    const city = useMyLocalization === 'true' ? user.city : req.body.city;
+    const uf = useMyLocalization === 'true' ? user.uf : req.body.uf;
+    const wantedGame = isTradeable === 'true' ? req.body.wantedGame : null;
+    const price = isTradeable === 'true' ? null : req.body.price;
 
     try {
       const newGame = await Game.create({
@@ -84,7 +89,7 @@ module.exports = {
         userId,
       });
 
-      return res.ok('Jogo registrado com sucesso.', newGame);
+      return res.ok('Jogo registrado com sucesso!', newGame);
     } catch (error) {
       return res.serverError();
     }
