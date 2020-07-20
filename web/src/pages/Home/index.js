@@ -105,7 +105,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='game-edit-delete'>
-                  <Link to='/user/edit-game/1' className='edit-btn'>
+                  <Link to={`/user/edit-game/${game.id}`} className='edit-btn'>
                     <FaPencilAlt color='#fff' size={32} />
                   </Link>
                   <div className='delete-btn'>
