@@ -8,10 +8,14 @@ const unlinkAsync = promisify(fs.unlink);
 module.exports = {
   async index(req, res) {
     const { userId } = req;
-    const { uf, city } = req.query;
+    const { title, uf, city } = req.query;
 
     try {
-      const games = await Game.findAll({ where: { uf, city } });
+      const games = await Game.findAll({ where: { title, uf, city } });
+
+      if (games.length === 0) {
+        return res.notFound('Nenhum resultado encontrado!');
+      }
 
       // Para mostrar apenas jogos cadastrados por outras pessoas
       const filteredGames = games.filter((game) => game.userId !== userId);
@@ -161,7 +165,7 @@ module.exports = {
 
       await game.destroy();
 
-      return res.ok();
+      return res.ok('Anúncio excluído com sucesso!');
     } catch (error) {
       return res.serverError();
     }
