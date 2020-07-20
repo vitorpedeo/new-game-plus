@@ -99,12 +99,22 @@ module.exports = {
     const { userId } = req;
     const { id } = req.params;
 
+    const user = await User.findOne({ where: { id: userId } });
+
     const image = req.file.path.slice(38);
 
-    const { title, description, platform, city, uf } = req.body;
-    const isTradeable = req.body.isTradeable ? true : false;
-    const wantedGame = isTradeable ? req.body.wantedGame : null;
-    const price = isTradeable ? null : req.body.price;
+    const {
+      title,
+      description,
+      platform,
+      useMyLocalization,
+      isTradeable,
+    } = req.body;
+
+    const city = useMyLocalization === 'true' ? user.city : req.body.city;
+    const uf = useMyLocalization === 'true' ? user.uf : req.body.uf;
+    const wantedGame = isTradeable === 'true' ? req.body.wantedGame : null;
+    const price = isTradeable === 'true' ? null : req.body.price;
 
     try {
       const game = await Game.findOne({ where: { id, userId } });
@@ -130,7 +140,7 @@ module.exports = {
         { where: { id, userId } }
       );
 
-      return res.ok('', updatedGame);
+      return res.ok('Anúncio editado com sucesso!', updatedGame);
     } catch (error) {
       return res.serverError();
     }
