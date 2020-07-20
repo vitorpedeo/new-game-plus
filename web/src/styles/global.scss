@@ -32,6 +32,10 @@ body {
     background: none;
   }
 
+  input {
+    transition: 0.4s;
+  }
+
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -45,6 +49,7 @@ body {
     font-size: 18px;
     font-weight: 100;
     cursor: pointer;
+    transition: 0.4s;
 
     background-image: url('../assets/chevron-down.svg');
     background-repeat: no-repeat;
@@ -54,6 +59,7 @@ body {
     &:disabled {
       background-color: #ccc;
       color: #ccc;
+      cursor: default;
     }
 
     &:focus {

@@ -97,7 +97,7 @@ const Home = () => {
 
                     {game.platform.includes('Xbox') ? (
                       <span style={{ color: '#007E00' }}>{game.platform}</span>
-                    ) : game.platform.includes('Playsation') ? (
+                    ) : game.platform.includes('Playstation') ? (
                       <span style={{ color: '#0A549C' }}>{game.platform}</span>
                     ) : (
                       <span style={{ color: '#E70012' }}>{game.platform}</span>
