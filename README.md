@@ -6,7 +6,7 @@
 
 <p align='center'  >
    <a href='https://www.linkedin.com/in/vitor-pereira-309a7319b/' >
-     <img src='https://img.shields.io/static/v1?label=Made By&message=Vitor%20Pereira&color=blue&style=flat-square' />
+     <img src='https://img.shields.io/static/v1?label=Made%20By&message=Vitor%20Pereira&color=blue&style=flat-square' />
    </a>
    <img src='https://img.shields.io/github/languages/top/vitorpedeo/new-game-plus?color=yellow&style=flat-square' />
    <img src='https://img.shields.io/github/languages/count/vitorpedeo/new-game-plus?style=flat-square' />
