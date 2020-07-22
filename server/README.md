@@ -7,7 +7,7 @@
 <p align='center' >
   <img src='https://img.shields.io/github/repo-size/vitorpedeo/new-game-plus?style=flat-square' />
   <img src='https://img.shields.io/github/issues/vitorpedeo/new-game-plus?style=flat-square' />
-  <img src='https://img.shields.io/github/commit-activity/w/vitorpedeo/new-game-plus?style=flat-square' />
+  <img src='https://img.shields.io/github/last-commit/vitorpedeo/new-game-plus?color=blue&style=flat-square' />
 </p>
 
 <p align='center'> 
