@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align='center' >
+  <img src='./.github/logo.png' height='80px' />
+</p>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+<p align='center' >
+  <img src='https://img.shields.io/github/contributors/vitorpedeo/new-game-plus?color=blue&style=flat-square' />
+  <img src='https://img.shields.io/github/languages/count/vitorpedeo/new-game-plus?style=flat-square' />
+  <img src='https://img.shields.io/github/stars/vitorpedeo/new-game-plus?style=flat-square' />
+</p>
 
-### `yarn start`
+<p align='center' >
+ <img src='./.github/ReactJSLogo.png' />
+</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align='center' >
+  Front-end da aplicação New Game +, feito utilizando ReactJS.
+</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+## ⚡ Bibliotecas utilizadas
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Axios](https://www.npmjs.com/package/axios) - Responsável por lidar com as requisições web.
+- [Node Sass](https://www.npmjs.com/package/node-sass) - Uso do Sass em conjunto com o React.
+- [React Icons](https://www.npmjs.com/package/react-icons) - Disponibilidade de vários ícones.
+- [React Router DOM](https://www.npmjs.com/package/react-router-dom) - Lib que facilita o gerenciamento de rotas no React.
+- [React Toastify](https://www.npmjs.com/package/react-toastify) - _Toasts_ bonitos e altamente customizáveis.
+- [SweetAlert2](https://www.npmjs.com/package/sweetalert2) - vários tipos de _modals_, podendo customizá-los e adicionar funções a eles.
+- [Universal Cookie](https://www.npmjs.com/package/universal-cookie) - gerenciamento de cookies das páginas da aplicação.
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔨 Instalação
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Primeiramente, certifique-se de instalar o [yarn](https://yarnpkg.com/) na sua máquina.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone o repositório e vá para a pasta _web_
 
-### `yarn eject`
+```shell
+git clone https://github.com/vitorpedeo/new-game-plus.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```shell
+cd web
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Instale todas as dependências
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```shell
+yarn install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Inicie a aplicação
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```shell
+yarn start
+```
