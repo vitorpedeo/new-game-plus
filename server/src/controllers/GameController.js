@@ -80,7 +80,9 @@ module.exports = {
 
     const user = await User.findOne({ where: { id: userId } });
 
-    const image = req.file.path.slice(38);
+    const imgPath = req.file.path;
+    const pathIndex = imgPath.indexOf('uploads');
+    const image = imgPath.slice(pathIndex);
 
     const {
       title,

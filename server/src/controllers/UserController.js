@@ -17,7 +17,8 @@ module.exports = {
     const { name, whatsApp, uf, city, email, password } = req.body;
 
     const imgPath = req.file.path;
-    const avatar = imgPath.slice(38);
+    const pathIndex = imgPath.indexOf('uploads');
+    const avatar = imgPath.slice(pathIndex);
 
     try {
       const user = await User.findOne({ where: { email } });

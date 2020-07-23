@@ -38,8 +38,8 @@
 
 `POST auth/sign-up` - responsável pelo cadastro de novos usuários.  
 `POST auth/sign-in` - rota de login do usuário, com validação e autenticação.  
-`GET auth/get-user-info` - retorna informações sobre o usuário logado.  
- 
+`GET auth/get-user-info` - retorna informações sobre o usuário logado.
+
 `POST game/create` - registro de um novo anúncio de um jogo.  
 `PUT game/update/:id` - atualização do anúncio informado por meio do seu id.  
 `DELETE game/delete/:id` - exclusão do anúncio informado por meio do seu id.  
@@ -51,7 +51,7 @@
 
 `GET game/show/:id` - lista as informações de um anúncio especificado pelo seu id.  
 `GET game/list-mine` - lista todos os anúncios feitos pelo própio usuário.  
-`GET game/show-mine/:id` - lista as informações de um anúncio do usuário especificado pelo seu id.  
+`GET game/show-mine/:id` - lista as informações de um anúncio do usuário especificado pelo seu id.
 
 ## 🔨 Instalação
 
@@ -72,6 +72,8 @@ Instale todas as dependências
 ```shell
 yarn install
 ```
+
+Crie um arquivo _.env_ na raíz do projeto, seguindo o que está escrito no arquivo _.env.example_.
 
 Inicie o servidor
 
