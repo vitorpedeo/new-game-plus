@@ -1,6 +1,6 @@
 node_modules
 .env
 uploads/games/*
+!uploads/games/.gitkeep
 uploads/users/*
-!upload/games/.gitkeep
-!upload/users/.gitkeep
+!uploads/users/.gitkeep
