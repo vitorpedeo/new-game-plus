@@ -43,8 +43,8 @@ Para esse projeto foram utilizadas, respectivamente, as tecnologias NodeJS e Rea
 
 Seguem listadas _features_ que futuramente serão implementadas:
 
-- Melhorar sistema de pesquisa - ⏰
-- Responsividade - ⏰
+- Melhorar sistema de pesquisa - ✔️
+- Responsividade - ✔️
 - Aplicativo para ambas as plataformas (Android e IOS) - ⏰
 
 ---
