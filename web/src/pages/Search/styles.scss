@@ -1,17 +1,18 @@
 @import '../../styles/utils/variables';
 
 .search-container {
-  padding: 20px 40px;
+  padding: 0 20px 40px;
   width: 100%;
+  min-height: 100vh;
 
   .main-search-content {
-    margin-top: 50px;
-    width: 100%;
+    margin: 50px auto 0 auto;
+    max-width: 1100px;
+    min-height: 100vh;
 
     display: flex;
 
     .search-options {
-      padding: 40px 80px;
       flex: 1;
 
       input {
@@ -21,7 +22,7 @@
         border: 1px solid #cccc;
         border-radius: 6px;
         outline: none;
-        font-size: 22px;
+        font-size: 1.25rem;
         font-weight: 100;
 
         &:focus {
@@ -52,7 +53,7 @@
       .back-home {
         margin-top: 100px;
         color: $primaryColor;
-        font-size: 22px;
+        font-size: 1.25rem;
         font-weight: bold;
 
         display: flex;
@@ -62,15 +63,31 @@
           margin-left: 10px;
         }
       }
+
+      button {
+        margin-top: 25px;
+        padding: 10px 0;
+        width: 100%;
+        background: $primaryColor;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.4s;
+      }
+
+      button:hover {
+        background: #0f6bff;
+      }
     }
 
     .search-results {
-      padding-top: 40px;
       flex: 2;
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
 
       .game-result-card {
         margin-bottom: 20px;
@@ -118,7 +135,7 @@
             display: flex;
 
             p {
-              font-size: 22px;
+              font-size: 1.25rem;
               font-weight: bold;
             }
 
@@ -126,8 +143,61 @@
               flex: 1;
               color: #9999;
               font-weight: bold;
-              font-size: 22px;
+              font-size: 1.25rem;
               text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .search-container {
+    .main-search-content {
+      max-width: 300px;
+
+      flex-direction: column;
+
+      .search-options {
+        .search-select-input {
+          flex-wrap: wrap;
+
+          justify-content: start;
+
+          select {
+            &:first-child {
+              width: 30%;
+            }
+
+            &:last-child {
+              margin-top: 20px;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .search-results {
+        margin-top: 50px;
+
+        .game-result-card {
+          padding: 20px;
+          width: 100%;
+
+          flex-direction: column;
+
+          .game-result-image {
+            width: 100%;
+          }
+
+          .game-result-info {
+            padding-left: 0;
+            margin-top: 10px;
+
+            .game-result-label + .game-result-label {
+              margin-top: 10px;
             }
           }
         }

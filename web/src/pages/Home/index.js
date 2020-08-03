@@ -9,6 +9,7 @@ import { getCookie, removeCookie } from '../../utils/cookies';
 import { successToast, errorToast } from '../../utils/toasts';
 
 import LogoHeader from '../../components/LogoHeader';
+import MobileHomeHeader from '../../components/MobileHomeHeader';
 
 import './styles.scss';
 
@@ -81,12 +82,18 @@ const Home = () => {
 
   return (
     <div className='home-container'>
+      <MobileHomeHeader
+        userName={userName}
+        userAvatar={userAvatar}
+        logout={logout}
+      />
+
       <div className='user-panel-container'>
         <LogoHeader />
         <div className='user-panel'>
           <div className='profile-pic-container'>
             <div className='profile-pic'>
-              <img src={`http://localhost:5000/${userAvatar}`} alt='' />
+              <img src={`http://192.168.1.6:5000/${userAvatar}`} alt='' />
             </div>
             <p>Seja bem vindo, {userName}!</p>
           </div>
@@ -119,7 +126,7 @@ const Home = () => {
             userGames.map((game) => (
               <div className='game-card' key={game.id}>
                 <div className='game-image'>
-                  <img src={`http://localhost:5000/${game.image}`} alt='' />
+                  <img src={`http://192.168.1.6:5000/${game.image}`} alt='' />
                 </div>
                 <div className='game-info'>
                   <div className='game-name-label'>

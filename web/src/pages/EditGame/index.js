@@ -144,7 +144,7 @@ const NewGame = () => {
             onChange={(e) => setPlatform(e.target.value)}
           >
             <option value='0' disabled>
-              Selecione uma plataforma
+              Plataforma
             </option>
             <option value='Xbox 360'>Xbox 360</option>
             <option value='Xbox One'>Xbox One</option>
@@ -207,7 +207,7 @@ const NewGame = () => {
             value={isTradeable}
             onChange={() => setIsTradeable(!isTradeable)}
           />
-          <label htmlFor='checkbox'>Quero realizar uma troca</label>
+          <label htmlFor='checkbox'>Quero fazer uma troca</label>
         </div>
         <div className='input-container'>
           <label htmlFor=''>Jogo de interesse</label>

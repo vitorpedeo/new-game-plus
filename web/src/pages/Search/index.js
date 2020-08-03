@@ -7,6 +7,7 @@ import api from '../../utils/api';
 import { getCookie } from '../../utils/cookies';
 
 import LogoHeader from '../../components/LogoHeader';
+import { errorToast } from '../../utils/toasts';
 
 import './styles.scss';
 
@@ -47,25 +48,28 @@ const Search = () => {
       .catch((err) => console.log(err));
   }, [selectedUf]);
 
-  useEffect(() => {
-    api
-      .get(
+  const handleSearch = async () => {
+    if (selectedUf === '0' || selectedCity === '0' || title === '') {
+      errorToast('Preencha todos os campos!');
+      return;
+    }
+
+    try {
+      const res = await api.get(
         `game/list-all?uf=${selectedUf}&city=${selectedCity}&title=${title}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
           },
         }
-      )
-      .then((res) => {
-        const games = res.data.data;
+      );
 
-        console.log(games);
-
-        setResults(games);
-      })
-      .catch(() => setResults([]));
-  }, [selectedUf, selectedCity, title, token]);
+      const games = res.data.data;
+      setResults(games);
+    } catch (error) {
+      setResults([]);
+    }
+  };
 
   return (
     <div className='search-container'>
@@ -107,6 +111,9 @@ const Search = () => {
               ))}
             </select>
           </div>
+          <button type='button' onClick={handleSearch}>
+            Pesquisar
+          </button>
           <Link to='/user/home' className='back-home'>
             <FaArrowLeft size={35} /> <p>Voltar</p>
           </Link>
@@ -120,7 +127,7 @@ const Search = () => {
                 className='game-result-card'
               >
                 <div className='game-result-image'>
-                  <img src={`http://localhost:5000/${result.image}`} alt='' />
+                  <img src={`http://192.168.1.6:5000/${result.image}`} alt='' />
                 </div>
                 <div className='game-result-info'>
                   <div className='game-result-label'>
@@ -165,7 +172,9 @@ const Search = () => {
               </Link>
             ))
           ) : (
-            <h1 style={{ textAlign: 'center' }}> Nenhum resultado. </h1>
+            <h1 style={{ textAlign: 'center', fontSize: '2.25rem' }}>
+              Nenhum resultado.
+            </h1>
           )}
         </div>
       </div>

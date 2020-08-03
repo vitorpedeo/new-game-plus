@@ -65,7 +65,7 @@ const GameDetails = () => {
           <FaArrowLeft size={35} /> <p>Voltar</p>
         </Link>
         <div className='game-detail-image'>
-          <img src={`http://localhost:5000/${image}`} alt='' />
+          <img src={`http://192.168.1.6:5000/${image}`} alt='' />
         </div>
         <div className='game-detail-info'>
           <h1>{title}</h1>

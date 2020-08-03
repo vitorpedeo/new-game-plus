@@ -17,3 +17,10 @@
 .progress-bar {
   background-color: #fff;
 }
+
+@media (max-width: 750px) {
+  .error-message,
+  .success-message {
+    width: 200px;
+  }
+}

@@ -7,7 +7,9 @@ import './styles.scss';
 const LogoHeader = () => {
   return (
     <header>
-      <img src={logo} alt='' />
+      <div>
+        <img src={logo} alt='' />
+      </div>
     </header>
   );
 };
