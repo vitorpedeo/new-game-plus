@@ -103,6 +103,8 @@ const GameDetails = () => {
           </p>
 
           <a
+            target='_blank'
+            rel='noopener noreferrer'
             href={`https://api.whatsapp.com/send?phone=${whatsApp}&text=Olá,%20tenho%20interesse%20no%20jogo%20anunciado.`}
           >
             Mensagem <FaWhatsapp size={25} />
