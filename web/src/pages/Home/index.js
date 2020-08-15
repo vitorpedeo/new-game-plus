@@ -93,7 +93,7 @@ const Home = () => {
         <div className='user-panel'>
           <div className='profile-pic-container'>
             <div className='profile-pic'>
-              <img src={`http://192.168.1.6:5000/${userAvatar}`} alt='' />
+              <img src={`http://localhost:5000/${userAvatar}`} alt='' />
             </div>
             <p>Seja bem vindo, {userName}!</p>
           </div>
@@ -126,7 +126,7 @@ const Home = () => {
             userGames.map((game) => (
               <div className='game-card' key={game.id}>
                 <div className='game-image'>
-                  <img src={`http://192.168.1.6:5000/${game.image}`} alt='' />
+                  <img src={`http://localhost:5000/${game.image}`} alt='' />
                 </div>
                 <div className='game-info'>
                   <div className='game-name-label'>
@@ -141,8 +141,8 @@ const Home = () => {
                     ) : game.platform.includes('Playstation') ? (
                       <span style={{ color: '#0A549C' }}>{game.platform}</span>
                     ) : (
-                      <span style={{ color: '#E70012' }}>{game.platform}</span>
-                    )}
+                          <span style={{ color: '#E70012' }}>{game.platform}</span>
+                        )}
                   </div>
                 </div>
                 <div className='game-edit-delete'>
@@ -159,10 +159,10 @@ const Home = () => {
               </div>
             ))
           ) : (
-            <h1 style={{ textAlign: 'center' }}>
-              Nenhum jogo anunciado ainda!
-            </h1>
-          )}
+              <h1 style={{ textAlign: 'center' }}>
+                Nenhum jogo anunciado ainda!
+              </h1>
+            )}
         </div>
       </div>
     </div>

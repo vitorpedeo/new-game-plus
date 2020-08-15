@@ -127,7 +127,7 @@ const Search = () => {
                 className='game-result-card'
               >
                 <div className='game-result-image'>
-                  <img src={`http://192.168.1.6:5000/${result.image}`} alt='' />
+                  <img src={`http://localhost:5000/${result.image}`} alt='' />
                 </div>
                 <div className='game-result-info'>
                   <div className='game-result-label'>
@@ -145,10 +145,10 @@ const Search = () => {
                         {result.platform}
                       </span>
                     ) : (
-                      <span style={{ color: '#E70012' }}>
-                        {result.platform}
-                      </span>
-                    )}
+                          <span style={{ color: '#E70012' }}>
+                            {result.platform}
+                          </span>
+                        )}
                   </div>
                   <div className='game-result-label'>
                     {result.isTradeable === false ? (
@@ -162,20 +162,20 @@ const Search = () => {
                         </span>
                       </>
                     ) : (
-                      <>
-                        <p>Interesse</p>
-                        <span>{result.wantedGame}</span>
-                      </>
-                    )}
+                        <>
+                          <p>Interesse</p>
+                          <span>{result.wantedGame}</span>
+                        </>
+                      )}
                   </div>
                 </div>
               </Link>
             ))
           ) : (
-            <h1 style={{ textAlign: 'center', fontSize: '2.25rem' }}>
-              Nenhum resultado.
-            </h1>
-          )}
+              <h1 style={{ textAlign: 'center', fontSize: '2.25rem' }}>
+                Nenhum resultado.
+              </h1>
+            )}
         </div>
       </div>
     </div>

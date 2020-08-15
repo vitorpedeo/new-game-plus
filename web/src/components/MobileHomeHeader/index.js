@@ -8,7 +8,7 @@ const MobileHomeHeader = ({ userName, userAvatar, logout }) => {
     <>
       <div className='mobile-header'>
         <div className='mobile-profile-pic'>
-          <img src={`http://192.168.1.6:5000/${userAvatar}`} alt='' />
+          <img src={`http://localhost:5000/${userAvatar}`} alt='' />
         </div>
         <p>Olá, {userName}!</p>
 
